@@ -172,8 +172,6 @@ console.assert(isVowel("a"));
 // string "tothohisos isos fofunon".
 // write your code here:
 
-
-
 // write your console.log/asserts here:
 
 
@@ -214,12 +212,6 @@ console.assert(largest([4,44,444]) === 444);
 // Write a function called `longest` that takes an array of strings and returns
 // the longest string in the array.
 // write your code here:
-longest = function(stringArray) {
-  current = longWord[i];
-if ( longest.length < current.length ) {
-    longest = current;
-}
-}
 
 // write your console.log/asserts here:
 
@@ -244,8 +236,24 @@ if ( longest.length < current.length ) {
 // Write a function called `containsIs` that takes an array of strings and
 // returns a new array with only the strings which contain the substring `is`
 // write your code here:
+containsIs = function(strings) {
+  var is = [];
+
+  for ( i = 0; i < strings.length; i++) {
+
+    if (strings[i] === 'is') {
+      is.push(strings[i]);
+    }
+  }
+  return is;
+}
+
 
 // write your console.log/asserts here:
+console.log(containsIs(strings));
+console.assert(containsIs('the dog is outside','cat', 'jumps up', 'over is not under') === 'the dog is outside', 'over is not under');
+console.assert(containsIs('It is hot', 'it was hot', 'Is it hot?') === 'It is hot', 'Is it hot?');
+console.assert(containsIs('Is this right?', 'maybe it is', 'probably not though') === 'Is this right?', 'maybe it is');
 
 
 ///////////////////////////////////////////////////////////////////////////////
