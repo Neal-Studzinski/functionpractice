@@ -87,15 +87,15 @@ console.assert(greaterThan(10,5) === false);
 // that was passed in.
 // write your code here:
 var greet = function(name) {
-  return console.log('Hello', name + "!");
+  return ('Hello, ' + name + "!");
 }
 
 // write your console.log/asserts here:
-greet("Neal");
+
 console.log(greet("Neal"));
-console.assert(greet("Neal") === "Hello Neal!", 'expected outcome of Hello Neal!');
-console.assert(greet("Joe") === "Hello Joe!");
-console.assert(greet("Jess") === "Hello Jess!");
+console.assert(greet("Neal") === "Hello, Neal!", 'expected outcome of Hello, Neal!');
+console.assert(greet("Joe") === "Hello, Joe!");
+console.assert(greet("Jess") === "Hello, Jess!");
 // -------------------
 // Write a function called `madlib` that takes 4 or more parameters (words).
 // The function should insert the words into a pre-defined sentence. Finally the
@@ -110,7 +110,7 @@ var madlib = function(param1,param2, param3, param4) {
 console.log(madlib("dog", "down", "wags", "tail") === "The dog jumps up and down and wags it's tail", "expected outcome of The dog jumps up and down and wags it's tail");
 console.assert(madlib("cat", "around", "shakes", "head") === "The cat jumps up and around and shakes it's head");
 console.assert(madlib("lizard", "down", "changes", "colors") === "The lizard jumps up and down and changes it's colors");
-console.assert(madlib("fish", "over", "eats", "food") === "The fish jumps up and over and eat's it's food");
+console.assert(madlib("fish", "over", "eats", "food") === "The fish jumps up and over and eats it's food");
 
 // -------------------
 // Write a function called `max` that returns the larger of two numbers
@@ -161,7 +161,7 @@ var isVowel = function(letter) {
 // write your console.log/asserts here:
 console.log(isVowel("o"));
 console.assert(isVowel("i") === true, 'expected outcome of true');
-console.assert(isVowel("p"));
+console.assert(isVowel("e"));
 console.assert(isVowel("a"));
 
 // ---------------------
@@ -171,7 +171,58 @@ console.assert(isVowel("a"));
 // string "tothohisos isos fofunon".
 // write your code here:
 
+function isConsonant(letter)
+{
+  if(letter === 'b' ||
+    letter === 'c' ||
+    letter === 'd' ||
+    letter === 'e' ||
+    letter === 'f' ||
+    letter === 'g' ||
+    letter === 'h' ||
+    letter === 'j' ||
+    letter === 'k' ||
+    letter === 'l' ||
+    letter === 'm' ||
+    letter === 'n' ||
+    letter === 'p' ||
+    letter === 'q' ||
+    letter === 'r' ||
+    letter === 's' ||
+    letter === 't' ||
+    letter === 'v' ||
+    letter === 'w' ||
+    letter === 'x' ||
+    letter === 'y' ||
+    letter === 'z') {
+     return true;
+   }
+   else {
+     return false;
+   }
+}
+function translation(originalSentence) {
+  var newSentence = '';
+
+  for(var i = 0; i < originalSentence.length; i++)
+  {
+    var currentLetter = originalSentence.charAt(i);
+    if(isConsonant(currentLetter))
+    {
+      newSentence += currentLetter + 'o' + currentLetter;
+    }
+    else {
+      newSentence += currentLetter;
+    }
+  }
+  return newSentence;
+}
+
+
 // write your console.log/asserts here:
+console.log(translation('test this'));
+console.assert(translation('test this') === 'toteoesostot tothohisos', ' error in translation' );
+
 
 
 // ---------------------
@@ -180,7 +231,7 @@ console.assert(isVowel("a"));
 // write your code here:
 
 var reverse = function(originalStr) {
-  var newStrs =  ''
+  var newStr =  ''
   for (var i = originalStr.length - 1; i >= 0; i--) {
     newStr = newStr += originalStr[i];
 
@@ -227,7 +278,8 @@ function longest(array){
 }
 
 // write your console.log/asserts here:
-console.log("The longest word is " + longest(strings))
+console.log("The longest word is " + longest(strings));
+console.assert(longest(strings) === 'collection', 'output should be collection');
 
 // ---------------------
 // Write a function called `getEvens` that takes an array of numbers and returns
@@ -262,7 +314,7 @@ function getOdds(numbers) {
 }
 // write your console.log/asserts here:
 console.log(getOdds([4,5,1,9,7,67,54,32]));
-console.assert(getOdds([1,2,3,4,5,6,7]) === 1,3,5,7);
+console.assert(getOdds([1,2,3,4,5,6,7]) === 1,3,5,7, 'output shout be 1,3,5,7');
 // ---------------------
 // Write a function called `containsIs` that takes an array of strings and
 // returns a new array with only the strings which contain the substring `is`
@@ -281,10 +333,10 @@ function containsIs(testIs) {
 
 
 // write your console.log/asserts here:
-console.log(containsIs());
-console.assert(containsIs(['the dog is outside','cat', 'jumps up', 'over is not under']) === 'the dog is outside', 'over is not under');
-console.assert(containsIs(['It is hot', 'it was hot', 'Is it hot?']) === 'It is hot', 'Is it hot?');
-console.assert(containsIs(['Is this right?', 'maybe it is', 'probably not though']) === 'Is this right?', 'maybe it is');
+console.log(containsIs(['is it hot outside']));
+//console.assert(containsIs(['the dog is outside','cat', 'jumps up', 'over is not under']) === ['the dog is outside', 'over is not under']);
+//console.assert(containsIs(['It is hot', 'it was hot', 'Is it hot?']) === ['It is hot', 'is it hot?']);
+//console.assert(containsIs(['is this right?', 'maybe it is', 'probably not though']) === ['is this right?', 'maybe it is'], 'should equal ['is this right?', 'maybe it is']');
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -318,7 +370,7 @@ console.assert(containsIs(['Is this right?', 'maybe it is', 'probably not though
 // write your code here:
 
 // write your console.log/asserts here:
-console.log('the objects that match javascript teachers are', objectMatches('JavaScript', 'teaches', instructors))
+
 
 ///////////////////////////////////////////////////////////////////////////////
 //                                                      Epic Mode                                                                            //
